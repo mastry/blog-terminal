@@ -31,6 +31,11 @@ const Help: React.FC = () => {
             All commands are case sensitive. If you're a VB programmer, please ask for help.
         </td>
     </tr>
+    <tr>
+        <td colSpan={2} className='pt-2 text-yellow-200 italic'>
+            Use the up and down arrow keys to cycle through your command history.
+        </td>
+    </tr>
   </table>
 }
 
