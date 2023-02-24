@@ -12,7 +12,7 @@ const Help: React.FC = () => {
     </tr>
     <tr>
       <td className='w-1/4'>clear</td>
-      <td className='w-3/4'>Clears the screen, of course</td>
+      <td className='w-3/4'>Clears the screen, of course. Don't even try <span className='text-yellow-500'>cls</span></td>
     </tr>
     <tr>
       <td className='w-1/4'>gui-mode</td>
