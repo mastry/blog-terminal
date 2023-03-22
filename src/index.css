@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.markdown h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
+    margin-bottom: 0.25em;
+    margin-top: 0.75em;
+}
+
+.markdown h1 {
+    font-size: xx-large;
+}
+
+.markdown h2 {
+    font-size: x-large;
+}
+
+.markdown h3 {
+    font-size: large;
+}
+
+.markdown h4 {
+    font-size: large;
+}
+
+.markdown a {
+    color:cornflowerblue
+}

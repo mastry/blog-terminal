@@ -2,7 +2,7 @@
 
 ## lant
 
-A Langton's Ant simulator.
+A Typescript-based Langton's Ant simulator.
 
 ## use-key-toggle
 

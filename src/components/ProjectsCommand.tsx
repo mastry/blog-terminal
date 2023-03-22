@@ -10,15 +10,15 @@ const ProjectsCommand: React.FC = () => {
         fetch('/pages/projects.md')
             .then(markdown => {
                 markdown.text()
-                .then(t => {
-                    setContent(<ReactMarkdown children={t} remarkPlugins={[remarkGFM]}/>)
-                })
+                    .then(t => {
+                        setContent(<ReactMarkdown children={t} remarkPlugins={[remarkGFM]} />)
+                    })
             })
     }, [])
 
-    return <>
+    return <div className="markdown">
         {content}
-    </>
+    </div>
 }
 
 export default ProjectsCommand

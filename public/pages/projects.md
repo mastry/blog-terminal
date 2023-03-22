@@ -1,13 +1,13 @@
 # Projects
 
-## [lant]()
+## lant
 
-A Typescript-based implementation of the popular cellular automaton.
+A Typescript-based Langton's Ant simulator.
 
-## [use-key-toggle]()
+## use-key-toggle
 
 A React hook to trigger events with keyboard combinations.
 
-## [blog-terminal]()
+## blog-terminal
 
 A terminal-based blogging engine
