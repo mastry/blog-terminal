@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 
-.markdown h1,h2,h3,h4,h5,h6 {
+.markdown h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: bold;
     margin-bottom: 0.25em;
     margin-top: 0.75em;
@@ -26,5 +31,14 @@
 }
 
 .markdown a {
-    color:cornflowerblue
+    color: cornflowerblue
+}
+
+.markdown p {
+    margin-bottom: 1.5em;
+}
+
+.markdown blockquote {
+    font-size: larger;
+    font-style: italic;
 }
