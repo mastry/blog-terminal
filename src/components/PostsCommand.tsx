@@ -1,7 +1,7 @@
 import React from "react";
 
-const PostCommand: React.FC = () => {
+const PostsCommand: React.FC = () => {
     return <>Not implemented</>
 }
 
-export default PostCommand
+export default PostsCommand

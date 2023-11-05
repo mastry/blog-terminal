@@ -4,7 +4,7 @@ import Banner from './components/Banner'
 import ClsCommand from './components/ClsCommand'
 import GuiModeCommand from './components/GuiModeCommand'
 import Help from './components/HelpCommand'
-import PostCommand from './components/PostsCommand'
+import PostsCommand from './components/PostsCommand'
 import ProjectsCommand from './components/ProjectsCommand'
 import { SetThemeCommand } from './components/SetThemeCommand'
 import TerminalOutput from './components/TerminalOutput'
@@ -51,7 +51,7 @@ function App() {
             case 'theme light':
                 return <SetThemeCommand theme='light' />
             case 'posts':
-                return <PostCommand />
+                return <PostsCommand />
             case 'projects':
                 return <ProjectsCommand />
             default:
