@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import useCommandBuffer from "../hooks/CommandBuffer";
 
 export interface TerminalPromptProps {
@@ -9,10 +9,12 @@ export interface TerminalPromptProps {
 const TerminalPrompt: React.FC<TerminalPromptProps> = (props) => {
     const [command, setCommand] = useState("")
     const [readPrevious, readNext, write, reset] = useCommandBuffer(20)
+    const inputRef = useRef<HTMLInputElement>(null)
 
     return <div className='flex flex-row justify-start mt-3'>
         <div className='pr-2'>{props.prompt}</div>
         <input type='text'
+            ref={inputRef}
             onKeyDown={onChange}
             onChange={e => { setCommand(e.target.value) }}
             value={command}
@@ -38,14 +40,25 @@ const TerminalPrompt: React.FC<TerminalPromptProps> = (props) => {
         else if (k.key == 'ArrowUp') {
             const cmd = readPrevious()
             setCommand(cmd)
+            moveCursorToEnd(cmd)
         }
         else if (k.key == 'ArrowDown') {
             const cmd = readNext()
             setCommand(cmd)
+            moveCursorToEnd(cmd)
         }
         else if (k.key == 'Tab') {
             k.preventDefault();
         }
+    }
+
+    function moveCursorToEnd(cmd: string) {
+        setTimeout(() => {
+            if (cmd && inputRef.current) {
+                inputRef.current.focus()
+                inputRef.current.setSelectionRange(cmd.length, cmd.length, "forward")
+            }
+        }, 0)
     }
 }
 
