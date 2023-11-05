@@ -17,6 +17,8 @@ function App() {
     return <div className='min-h-screen font-terminal text-lg p-8 bg-slate-50 text-black dark:bg-slate-800 dark:text-white'>
         <TerminalOutput content={output} />
         <TerminalPrompt prompt='jeffmastry.dev &gt;' callback={command => {
+            command = command.trim()
+
             if (command === 'clear') {
                 setOutput(<></>)
             }
