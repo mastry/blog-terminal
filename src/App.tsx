@@ -53,11 +53,15 @@ function App() {
             case 'posts':
                 return <PostsCommand />
             case 'projects':
-                return <ProjectsCommand />
+                return <ProjectsCommand onRenderComplete={scrollToBottom} />
             default:
                 return <UnknownCommand />
         }
     }
+}
+
+function scrollToBottom() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
 }
 
 export default App
