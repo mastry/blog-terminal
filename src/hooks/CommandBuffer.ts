@@ -1,23 +1,31 @@
 import { useState } from "react";
 
-function useCommandBuffer(size: number): [()=>string, ()=>string, (cmd:string)=> void, ()=>void] {
+function useCommandBuffer(size: number): [() => string | undefined, () => string | undefined, (cmd: string) => void, () => void] {
     const [buffer, setBuffer] = useState<string[]>([])
     const [readPtr, setReadPtr] = useState(-1)
 
     return [readPrevious, readNext, write, reset]
 
-    function readPrevious(): string {
+    function readPrevious(): string | undefined {
+        if (buffer.length == 0) {
+            return undefined
+        }
+
         let ptr = readPtr + 1
-        if(ptr >= buffer.length) {
+        if (ptr >= buffer.length) {
             ptr = -1
         }
         setReadPtr(ptr)
         return ptr == -1 ? "" : buffer[ptr]
     }
 
-    function readNext(): string {
+    function readNext(): string | undefined {
+        if (buffer.length == 0) {
+            return undefined
+        }
+
         let ptr = readPtr - 1
-        if(ptr < -1) {
+        if (ptr < -1) {
             ptr = buffer.length - 1
         }
         setReadPtr(ptr)
@@ -26,8 +34,8 @@ function useCommandBuffer(size: number): [()=>string, ()=>string, (cmd:string)=>
 
     function write(command: string): void {
         let b = buffer.filter(x => x !== command)
-        if(b.length >= size) {
-            b = b.slice(0, size -1)
+        if (b.length >= size) {
+            b = b.slice(0, size - 1)
         }
 
         setBuffer([command, ...b])

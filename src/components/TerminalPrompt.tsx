@@ -7,7 +7,7 @@ export interface TerminalPromptProps {
 }
 
 const TerminalPrompt: React.FC<TerminalPromptProps> = (props) => {
-    const [command, setCommand] = useState("")
+    const [command, setCommand] = useState<string | undefined>()
     const [readPrevious, readNext, write, reset] = useCommandBuffer(20)
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -25,7 +25,7 @@ const TerminalPrompt: React.FC<TerminalPromptProps> = (props) => {
 
     function onChange(k: React.KeyboardEvent) {
         if (k.key == 'Enter') {
-            if (command.length > 0) {
+            if (command && command.length > 0) {
                 const cmd = command
                 write(cmd)
                 setCommand('')
@@ -39,20 +39,23 @@ const TerminalPrompt: React.FC<TerminalPromptProps> = (props) => {
         }
         else if (k.key == 'ArrowUp') {
             const cmd = readPrevious()
-            setCommand(cmd)
-            moveCursorToEnd(cmd)
+            showCommand(cmd)
         }
         else if (k.key == 'ArrowDown') {
             const cmd = readNext()
-            setCommand(cmd)
-            moveCursorToEnd(cmd)
+            showCommand(cmd)
         }
         else if (k.key == 'Tab') {
             k.preventDefault();
         }
     }
 
-    function moveCursorToEnd(cmd: string) {
+    function showCommand(cmd: string | undefined) {
+        setCommand(cmd)
+        moveCursorToEnd(cmd)
+    }
+
+    function moveCursorToEnd(cmd: string | undefined) {
         setTimeout(() => {
             if (cmd && inputRef.current) {
                 inputRef.current.focus()
