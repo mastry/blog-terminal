@@ -17,7 +17,7 @@ const TerminalPrompt: React.FC<TerminalPromptProps> = (props) => {
             ref={inputRef}
             onKeyDown={onChange}
             onChange={e => { setCommand(e.target.value) }}
-            value={command}
+            value={command || ''}
             autoFocus
             placeholder="enter your command (type help for options)"
             className='w-3/4 placeholder:italic placeholder:text-slate-600 bg-transparent border-0 outline-none focus:border-none' />
