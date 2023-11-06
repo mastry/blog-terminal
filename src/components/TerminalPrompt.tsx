@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import useCommandBuffer from "../hooks/CommandBuffer";
+import useCommandBuffer from "../hooks/commandBuffer";
 
 export interface TerminalPromptProps {
     prompt: string,
